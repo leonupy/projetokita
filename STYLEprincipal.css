@@ -1,0 +1,561 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Montserrat', sans-serif;
+}
+
+body {
+  color: rgb(0, 0, 0);
+  overflow-x: hidden;
+}
+
+/* ===== Header ===== */
+/* ===== Header ===== */
+/* ===== NAVBAR ===== */
+.navbar {
+  backdrop-filter: blur(8px);
+  transition: background-color 0.4s ease, box-shadow 0.4s ease;
+  background: transparent;
+}
+
+.navbar.scrolled {
+  background: rgba(65, 11, 71, 0.95);
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.4);
+}
+
+.navbar a.nav-link {
+  color: white !important;
+  font-weight: 600;
+  margin: 0 12px;
+  transition: color 0.3s ease;
+}
+
+.navbar a.nav-link:hover {
+  color: #b97ff5 !important;
+}
+
+/* Centralizar os links no mobile */
+@media (max-width: 991px) {
+  .navbar-collapse {
+    text-align: center;
+  }
+
+  .navbar-nav {
+    flex-direction: column;
+    gap: 15px;
+  }
+}
+
+    nav ul{list-style:none;display:flex;gap:32px;align-items:center}
+    nav a{
+      color:#fff;text-decoration:none;font-weight:600;
+      letter-spacing:1px;font-size:14px;opacity:0.95
+    }
+    nav a:hover{opacity:1;text-decoration:underline}
+
+
+    .hero{
+      position:relative;display:flex;align-items:center;justify-content:center;
+      height:100vh;width:100vw;overflow:hidden;
+    }
+
+
+/* Container do vídeo */
+/* ===== Container do vídeo ===== */
+.video-bg {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+  z-index: -1;
+  pointer-events: none; /* evita cliques no vídeo */
+}
+
+/* ===== Iframe do YouTube ===== */
+.video-bg iframe {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 177.78vh; /* Mantém proporção 16:9 */
+  height: 100vh;
+  transform: translate(-50%, -50%) scale(1.2);
+  transition: transform 6s ease;
+  object-fit: cover;
+  filter: brightness(0.45); /* escurece pra destacar o texto */
+  border: none; /* remove possíveis bordas do iframe */
+}
+
+/* ===== Zoom suave quando o vídeo carregar ===== */
+.video-bg.loaded iframe {
+  transform: translate(-50%, -50%) scale(1.35);
+}
+
+/* ===== Responsividade ===== */
+@media (max-width: 768px) {
+  .video-bg iframe {
+    width: 250vw; /* amplia pra cobrir telas altas */
+    height: 140vh;
+  }
+}
+
+
+
+
+    .overlay{
+      position:absolute;inset:0;
+      background:linear-gradient(180deg,rgba(0,0,0,0.25),rgba(0,0,0,0.55));
+      z-index:1;
+    }
+
+    .hero-content{
+      position:relative;z-index:10;text-align:center;
+      padding:32px 24px;max-width:1100px;width:100%;
+    }
+    h1{
+      font-size:64px;line-height:0.9;font-weight:800;
+      margin-bottom:18px;letter-spacing:2px;text-transform:uppercase;
+      color:#fff;text-shadow:0 6px 30px rgba(252, 252, 252, 0.6);
+    }
+    p.lead{
+      font-weight:400;opacity:0.92;letter-spacing:1px;margin-bottom:28px;
+    }
+
+    .cta{
+      display:inline-flex;align-items:center;gap:12px;
+      padding:14px 22px;border-radius:999px;
+      border:2px solid rgba(79, 79, 79, 0.18);
+      background:rgba(255,255,255,0.03);
+      backdrop-filter:blur(2px);cursor:pointer;
+      transition:transform 0.3s ease;
+  color: white;
+}
+    .cta:hover{transform:translateY(-3px)}
+
+    .scroll-indicator{
+      position:absolute;bottom:44px;left:50%;transform:translateX(-50%);
+      z-index:12;text-align:center;font-size:13px;opacity:0.9
+    }
+    .dot{
+      width:10px;height:10px;border-radius:50%;
+      background:transparent;border:2px solid rgba(255,255,255,0.7);
+      display:inline-block;margin-top:8px
+    }
+
+    main section{min-height:60vh;padding:80px 18px; 
+    background:linear-gradient(180deg,rgba(0,0,0,0.25),rgba(0,0,0,0.55));
+    }
+    #components h2 {
+  color: #a020f0;
+}
+body {
+  margin: 0;
+  font-family: "Poppins", sans-serif;
+  color: white;
+  background-color: #000;
+}
+
+
+/* --- SEÇÃO: O que é o KITA --- */
+/* container da seção: garante que o conteúdo fique acima do vetor */
+.sobre-kita {
+  position: relative;
+  background: linear-gradient(to top, #220029, #000);
+  padding: 100px 20px;
+  overflow: hidden; /* esconde partes do vetor fora da seção */
+}
+
+/* mantém o conteúdo (texto + quadrado) acima do vetor */
+.sobre-kita .container {
+  position: relative;
+  z-index: 3;         /* conteúdo à frente */
+  max-width: 1100px;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 60px;
+}
+
+/* largura do texto */
+.sobre-kita .texto {
+  flex: 1;
+  z-index: 3;
+}
+
+/* quadrado de imagem à direita */
+.sobre-kita .imagem {
+  height: 682px;
+  width: 600px;
+  background-color: #cfcfcf;
+  border-radius: 10px;
+  z-index: 3;
+}
+
+/* VETOR (gato) como imagem ABSOLUTA por trás */
+.vetor-fundo {
+  position: absolute;
+  z-index: 1;             /* atrás do conteúdo */
+  left: 0%;             /* puxa o vetor para a esquerda (ajuste se necessário) */
+  bottom: 0%;            /* posiciona na base da seção (ajuste se necessário) */
+  width: 589px;             /* escala do vetor na seção; ajuste entre 50% e 100% */
+  max-width: 1200px;
+  opacity: 0.12;          /* marca d'água suave */
+  pointer-events: none;   /* evita que interfira em cliques */
+  transform: translateZ(0);
+}
+
+/* VARIANTES responsivas: vetor menor em telas pequenas */
+@media (max-width: 900px) {
+  .sobre-kita .container {
+    flex-direction: column;
+    text-align: center;
+    gap: 30px;
+  }
+
+  .sobre-kita .imagem {
+    width: 600px;
+    height: 682px;
+  }
+
+  .vetor-fundo {
+    left: 50px;
+    transform: translateX(-50%);
+    bottom: -30%;
+    width: 140%;
+    opacity: 0.08;
+  }
+}
+
+/* Seção: Como o KITA funciona */
+.funcionamento {
+  background-color: #000;
+  padding: 80px 20px;
+background: url('/KITAsite/img/Como funciona.png') no-repeat center 100% / cover;
+}
+
+.funcionamento .container {
+  max-width: 1000px;
+  margin: auto;
+
+}
+
+.funcionamento h2 {
+  text-align: center;
+  font-size: 2rem;
+  margin-bottom: 20px;
+}
+
+.funcionamento p {
+  color: white;
+}
+
+.funcionamento h3{
+  color:#a974f7;
+}
+
+.funcionamento .descricao {
+  text-align: center;
+  color: #ccc;
+  margin-bottom: 50px;
+}
+
+.blocos {
+  display: flex;
+  flex-direction: column;
+  gap: 60px;
+}
+
+/* Bloco: imagem e texto lado a lado */
+.bloco {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 40px;
+  flex-wrap: nowrap;
+}
+
+/* Imagem */
+.bloco .imagem {
+  width: 45%;
+  height: 320px;
+  background-color: #ccc;
+  border-radius: 10px;
+}
+
+/* Conteúdo */
+.bloco .conteudo {
+  width: 50%;
+}
+
+.bloco .conteudo h3 {
+  color: #b57be6;
+  font-size: 1.4rem;
+  margin-bottom: 12px;
+}
+
+.bloco .conteudo p {
+  color: #ddd;
+  line-height: 1.6;
+  font-size: 1rem;
+}
+
+/* Alternar o lado da imagem a cada bloco (esquerda/direita) */
+.bloco:nth-child(even) {
+  flex-direction: row-reverse;
+}
+
+/* Responsivo */
+@media (max-width: 900px) {
+  .bloco {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .bloco .imagem,
+  .bloco .conteudo {
+    width: 100%;
+  }
+}
+
+
+
+/* ===== SEÇÃO DE CONTATO ===== */
+.contato {
+  display: flex;
+  height: 100vh;
+  font-family: "Poppins", sans-serif;
+}
+
+/* Lado esquerdo */
+.contato-info {
+  background: #000;
+  color: #fff;
+  width: 40%;
+  padding: 70px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.contato-info h2 {
+  font-size: 2rem;
+  margin-bottom: 10px;
+}
+
+.contato-info p {
+  color: #bbb;
+  margin-bottom: 40px;
+  line-height: 1.6;
+}
+
+.item-contato {
+  display: flex;
+  align-items: flex-start;
+  gap: 18px;
+  margin-bottom: 35px;
+}
+
+.item-contato i {
+  font-size: 1.6rem;
+  color: #b57be6;
+  margin-top: 6px;
+  min-width: 30px;
+  text-align: center;
+}
+
+.item-contato h3 {
+  font-size: 1.1rem;
+  color: #fff;
+  margin-bottom: 6px;
+}
+
+.item-contato p {
+  font-size: 0.95rem;
+  color: #bbb;
+  margin-bottom: 6px;
+}
+
+.item-contato a {
+  color: #b57be6;
+  text-decoration: none;
+  transition: 0.3s;
+}
+
+.item-contato a:hover {
+  text-decoration: underline;
+  color: #d3a5ff;
+}
+
+.item-contato ul {
+  list-style: none;
+  margin: 5px 0 0;
+  padding: 0;
+  color: #bbb;
+}
+
+/* Lado direito (fundo quadriculado transparente) */
+.contato-imagem {
+  width: 60%;
+  background: url('/KITAsite/img/imgContato.jpg') no-repeat center center / cover;
+  background-size: 785px 1020px;
+  background-position: 0 0, 0 20px, 20px -20px, -20px 0;
+}
+
+/* ===== Responsivo ===== */
+@media (max-width: 900px) {
+  .contato {
+    flex-direction: column;
+  }
+
+  .contato-info, .contato-imagem {
+    width: 100%;
+    height: auto;
+  }
+
+  .contato-info {
+    padding: 40px;
+  }
+}
+
+
+
+    /* ===== Footer ===== */
+.footer {
+  background-color: #64197a;
+  padding: 40px;
+  color: #000101;
+  font-family: Inter, sans-serif;
+  width: 100vw;       /* ocupa toda a largura da tela */
+  position: relative;
+  left: 50%;
+  right: 50%;
+  margin-left: -50vw; /* “anula” o container */
+  margin-right: -50vw;
+}
+
+
+.event:hover .panel h3 {
+  color: var(--accent-2);
+}
+
+.logotipoAvancos{
+  height: 30px;
+  margin-top: 15px;
+}
+
+
+.panel {
+  background: var(--panel);
+  padding: 20px;
+  border-radius: 12px;
+  box-shadow: 0 0 10px rgba(138, 43, 226, 0.4);
+  color: var(--muted);
+  display: flex;
+  flex-direction: column;
+  align-items: center;   /* Centraliza horizontalmente */
+  justify-content: center; /* Centraliza verticalmente */
+  text-align: center; /* Centraliza o texto */
+}
+
+.textoTempo {
+  margin: 0;
+  text-align: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+
+.footer-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  border-bottom: 1px solid #3D1344;
+  padding-bottom: 10px;
+}
+
+.footer-logo img {
+  height: 35px;
+}
+
+.footer-nav {
+  display: flex;
+  gap: 30px;
+}
+
+.footer-nav a {
+  color: #000101;
+  text-decoration: none;
+  font-weight: 500;
+  font-size: 15px;
+  transition: color 0.3s ease;
+}
+
+.footer-nav a:hover {
+  color: #380042;
+}
+
+.footer-social {
+  display: flex;
+  gap: 15px;
+  text-decoration: none;
+}
+
+.footer-social img {
+  width: 22px;
+  height: 22px;
+  filter: brightness(0) invert(1); /* deixa as imagens brancas se forem pretas */
+  transition: transform 0.3s ease;
+}
+
+.footer-social img:hover {
+  transform: scale(1.1);
+}
+
+.footer-bottom {
+  text-align: center;
+  font-size: 13px;
+  color: 000101;
+  margin-top: 10px;
+}
+
+
+.footer-logo img {
+  height: 30px;
+}
+
+.footer-nav a {
+  color: #000; /* links pretos */
+  text-decoration: none;
+  font-weight: 500;
+  font-size: 15px;
+  transition: color 0.3s ease;
+}
+
+.footer-nav a:hover {
+  color: #ffb8fb; /* preto mais escuro no hover */
+}
+
+.footer-social img {
+  width: 22px;
+  height: 22px;
+  filter: none; /* remove o filtro branco */
+  transition: transform 0.3s ease;
+}
+
+.footer-social img:hover {
+  transform: scale(1.1);
+}
+
+.footer-bottom {
+  text-align: center;
+  font-size: 13px;
+  color: #000; /* texto preto */
+  margin-top: 10px;
+}
+
+

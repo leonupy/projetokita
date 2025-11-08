@@ -1,0 +1,596 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>KITA - Sobre Nós</title>
+
+  <!-- Bootstrap -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600;800&display=swap" rel="stylesheet">
+
+  <!-- Ícones -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" rel="stylesheet">
+
+  <!-- Animate On Scroll (AOS) for animations -->
+  <link href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css" rel="stylesheet">
+
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Montserrat', sans-serif;
+    }
+
+    :root {
+      --bg: #0b0b0d;
+      --panel: #0f0f11;
+      --muted: #bfc0c6;
+      --accent: #8a2be2;
+      --accent-2: #9f4df0;
+      --max-width: 1100px;
+      --radius: 14px;
+      --gap: 28px;
+    }
+
+    body {
+      color: white;
+      background: var(--bg);
+      overflow-x: hidden;
+    }
+
+    /* ===== NAVBAR ===== */
+    .navbar {
+      backdrop-filter: blur(8px);
+      transition: background-color 0.4s ease, box-shadow 0.4s ease;
+      background: transparent;
+    }
+
+    .navbar.scrolled {
+      background: rgba(65, 11, 71, 0.95);
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.4);
+    }
+
+    .navbar a.nav-link {
+      color: white !important;
+      font-weight: 600;
+      margin: 0 12px;
+      transition: color 0.3s ease;
+    }
+
+    .navbar a.nav-link:hover {
+      color: #b97ff5 !important;
+    }
+
+    /* Centralizar os links no mobile */
+    @media (max-width: 991px) {
+      .navbar-collapse {
+        text-align: center;
+      }
+
+      .navbar-nav {
+        flex-direction: column;
+        gap: 15px;
+      }
+    }
+
+    /* ===== SEÇÃO SOBRE NÓS ===== */
+    .sobre {
+      position: relative;
+      height: auto;
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 150px 20px;
+      overflow: hidden;
+    }
+
+    .sobre .fundo {
+      position: absolute;
+      inset: 0;
+      background: url('/KITAsite/img/fundoSobre.png') no-repeat center center / cover;
+      z-index: 0;
+      opacity: 0.7;
+      transition: opacity 0.3s ease;
+    }
+
+    .sobre:hover .fundo {
+      opacity: 0.85;
+    }
+
+    .sobre .conteudo {
+      position: relative;
+      z-index: 2;
+      max-width: 900px;
+      padding: 20px;
+    }
+
+    .sobre h1 {
+      font-size: clamp(1.8rem, 5vw, 2.5rem);
+      font-weight: 800;
+      margin-bottom: 40px;
+      color: #fff;
+    }
+
+    .sobre p {
+      font-size: clamp(0.9rem, 2vw, 1.1rem);
+      line-height: 1.8;
+      color: var(--muted);
+    }
+
+    /* ===== SEÇÃO EQUIPE ===== */
+    .equipe {
+      background: var(--bg);
+      position: relative;
+      z-index: 2;
+      padding: 10px 20px;
+      max-width: var(--max-width);
+      margin: 0 auto;
+    }
+
+    .equipe h2 {
+      text-align: center;
+      font-size: clamp(1.6rem, 5vw, 2rem);
+      font-weight: 700;
+      margin-bottom: 60px;
+      margin-top: 90px;
+      color: var(--accent);
+    }
+
+    .membro {
+      display: flex;
+      align-items: center;
+      margin-bottom: 80px;
+      gap: 30px;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .membro:hover {
+      transform: translateY(-5px);
+    }
+
+    .foto {
+      width: 250px;
+      height: 250px;
+      border-radius: 50%;
+      background-size: cover;
+      background-position: center;
+      flex-shrink: 0;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .membro:hover .foto {
+      transform: scale(1.05);
+      box-shadow: 0 0 15px rgba(138, 43, 226, 0.5);
+    }
+
+    .info {
+      flex: 1;
+    }
+
+    .nome {
+      font-size: 1.3rem;
+      font-weight: 700;
+      color: var(--accent);
+      transition: color 0.3s ease;
+    }
+
+    .membro:hover .nome {
+      color: #b97ff5;
+    }
+
+    .info p {
+      margin: 10px 0;
+      color: var(--muted);
+      font-size: 0.95rem;
+      line-height: 1.6;
+    }
+
+    .linkedin {
+      color: var(--accent);
+      font-weight: 600;
+      text-decoration: none;
+      transition: color 0.3s ease;
+    }
+
+    .linkedin:hover {
+      color: #d4aaff;
+      text-decoration: underline;
+    }
+
+    /* ===== AJUSTE RESPONSIVO - IMAGEM ACIMA DO TEXTO ===== */
+    @media (max-width: 991px) {
+      .membro {
+        flex-direction: column;
+        text-align: center;
+      }
+
+      .membro .foto {
+        margin-bottom: 20px;
+        width: 200px;
+        height: 200px;
+      }
+
+      .membro .info {
+        text-align: center;
+        padding: 0 10px;
+      }
+
+      .membro .info p {
+        font-size: 0.95rem;
+      }
+    }
+
+    /* ===== SEÇÃO ORIENTADORES ===== */
+    .orientadores {
+      background-color: var(--bg);
+      color: #fff;
+      text-align: center;
+      padding: 60px 20px;
+    }
+
+    .orientadores h2 {
+      font-size: clamp(1.6rem, 5vw, 2.2rem);
+      font-weight: 700;
+      margin-bottom: 40px;
+      color: var(--accent);
+    }
+
+    .orientadores-container {
+      display: flex;
+      justify-content: center;
+      gap: 100px;
+      margin-bottom: 50px;
+      flex-wrap: wrap;
+      margin-bottom: 100px;
+    }
+
+    .orientador {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      transition: transform 0.3s ease;
+    }
+
+    .orientador:hover {
+      transform: scale(1.05);
+    }
+
+    /* Foto do Felipe */
+    .orientador .foto {
+      width: 250px;
+      height: 250px;
+      background: url("/KITAsite/img/Felipe.jpeg") no-repeat center / cover;
+      border-radius: 50%;
+      margin-bottom: 10px;
+      transition: box-shadow 0.3s ease;
+    }
+
+    .orientador:hover .foto {
+      box-shadow: 0 0 15px rgba(138, 43, 226, 0.5);
+    }
+
+    /* Foto do Adilson */
+    .orientador .foto2 {
+      width: 250px;
+      height: 250px;
+      background: url("/KITAsite/img/Adilson.jpeg") no-repeat center / cover;
+      border-radius: 50%;
+      margin-bottom: 10px;
+      transition: box-shadow 0.3s ease;
+    }
+
+    .orientador:hover .foto2 {
+      box-shadow: 0 0 15px rgba(138, 43, 226, 0.5);
+    }
+
+    .orientador .nome {
+      color: #f3a8ff;
+      font-weight: 600;
+      margin: 5px 0 0 0;
+      transition: color 0.3s ease;
+    }
+
+    .orientador:hover .nome {
+      color: #b97ff5;
+    }
+
+    .orientador .ano {
+      color: #fff;
+      font-size: 13px;
+      margin: 2px 0 0 0;
+    }
+
+    /* ===== CARROSSEL ===== */
+    .imagem-carrossel {
+      width: 70%;
+      height: 384px;
+      margin: 0 auto;
+      position: relative;
+      overflow: hidden;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 8px;
+      transition: box-shadow 0.3s ease;
+    }
+
+    .imagem-carrossel:hover {
+      box-shadow: 0 0 20px rgba(138, 43, 226, 0.5);
+    }
+
+    .imagem-carrossel .imagem {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-size: cover;
+      background-position: center;
+      transition: opacity 0.6s ease-in-out, transform 0.3s ease;
+    }
+
+    .imagem-carrossel:hover .imagem {
+      transform: scale(1.02);
+    }
+
+    .imagem-carrossel .seta {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      font-size: 30px;
+      color: #fff;
+      cursor: pointer;
+      user-select: none;
+      z-index: 2;
+      transition: transform 0.2s ease, color 0.2s ease;
+      background: rgba(0, 0, 0, 0.5);
+      padding: 10px;
+      border-radius: 50%;
+    }
+
+    .imagem-carrossel .seta:hover {
+      transform: translateY(-50%) scale(1.2);
+      color: var(--accent);
+    }
+
+    .imagem-carrossel .voltar {
+      left: 20px;
+    }
+
+    .imagem-carrossel .avancar {
+      right: 20px;
+    }
+
+    /* ===== FOOTER ===== */
+    .footer {
+      background-color: #64197a;
+      padding: 40px;
+      color: #000;
+      width: 100%;
+    }
+
+    .footer-container {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      border-bottom: 1px solid #3D1344;
+      padding-bottom: 10px;
+    }
+
+    .footer-logo img {
+      height: 35px;
+    }
+
+    .footer-nav {
+      display: flex;
+      gap: 30px;
+    }
+
+    .footer-nav a {
+      color: #000;
+      text-decoration: none;
+      font-weight: 500;
+      font-size: 15px;
+      transition: color 0.3s ease;
+    }
+
+    .footer-nav a:hover {
+      color: #ffb8fb;
+    }
+
+    .footer-social {
+      display: flex;
+      gap: 15px;
+    }
+
+    .footer-social img {
+      width: 22px;
+      height: 22px;
+      transition: transform 0.3s ease;
+    }
+
+    .footer-social img:hover {
+      transform: scale(1.1);
+    }
+
+    .footer-bottom {
+      text-align: center;
+      font-size: 13px;
+      color: #000;
+      margin-top: 10px;
+    }
+
+    /* ===== RESPONSIVIDADE ===== */
+    @media (max-width: 768px) {
+      .orientadores-container {
+        gap: 50px;
+      }
+
+      .orientador .foto, .orientador .foto2 {
+        width: 200px;
+        height: 200px;
+      }
+
+      .imagem-carrossel {
+        width: 90%;
+        height: 250px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <!-- ===== NAVBAR ===== -->
+  <nav id="navbar" class="navbar navbar-expand-lg fixed-top">
+    <div class="container">
+      <a class="navbar-brand" href="/KITAsite/INDEXprincipal.html">
+        <img src="/KITAsite/img/logo.png" alt="KITA" height="40">
+      </a>
+      <button class="navbar-toggler text-white" type="button" data-bs-toggle="collapse" data-bs-target="#navMenu">
+        <span class="bi bi-list"></span>
+      </button>
+      <div class="collapse navbar-collapse justify-content-end" id="navMenu">
+        <ul class="navbar-nav mx-auto text-center">
+          <li class="nav-item"><a class="nav-link" href="/KITAsite/INDEXprincipal.html">Início</a></li>
+          <li class="nav-item"><a class="nav-link" href="/KITAsite/INDEXavancos.html">Evolução</a></li>
+          <li class="nav-item"><a class="nav-link" href="/KITAsite/Experiência.html">Experiências</a></li>
+          <li class="nav-item"><a class="nav-link active" href="#sobre">Sobre Nós</a></li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <section class="sobre" data-aos="fade-up" data-aos-duration="800">
+    <div class="fundo"></div>
+    <div class="conteudo">
+      <h1>Sobre Nós</h1>
+      <p>
+        O projeto KITA nasceu da vontade de unir tecnologia e empatia em uma única criação. Desenvolvido por quatro estudantes do ensino médio com apoio da FIAP, o robô foi pensado para auxiliar pessoas com deficiência visual, oferecendo uma alternativa acessível e inovadora aos cães-guia tradicionais. Inspirado no comportamento de um gato, o KITA representa confiança, companhia e autonomia, transmitindo segurança a quem precisa de apoio na locomoção.
+
+        Durante o desenvolvimento, a equipe combinou conhecimentos de robótica, eletrônica, programação e design 3D para construir um protótipo funcional, capaz de detectar obstáculos e se movimentar com estabilidade. Mais do que um experimento técnico, o KITA simboliza a integração entre aprendizado e propósito social, mostrando que a tecnologia pode ser uma ferramenta de inclusão e transformação.
+
+        Nos próximos anos, o grupo pretende aprimorar o robô, tornando-o mais forte, interativo e preparado para guiar pessoas em ambientes diversos. O KITA é, acima de tudo, um reflexo do compromisso dos estudantes em criar soluções que aproximem o ser humano da tecnologia, com sensibilidade, inovação e responsabilidade social.
+      </p>
+    </div>
+  </section>
+
+  <section class="equipe">
+    <h2>Nossa Equipe</h2>
+
+    <div class="membro" data-aos="fade-right" data-aos-duration="800">
+      <div class="foto" style="background-image: url(/KITAsite/img/Léo.jpg);"></div>
+      <div class="info">
+        <h3 class="nome">Leonardo</h3>
+        <p>Me chamo Leonardo, tenho 16 anos e minha principal contribuição no projeto foi na área de marketing e gestão. Fui responsável por monitorar as redes sociais, criar a identidade visual e planejar toda a comunicação e o design do robô, unindo estratégia e criatividade para destacar o KITA.Também assumi a liderança do grupo, organizando o andamento do projeto, coordenando a equipe e participando da dinâmica da apresentação. Além disso, atuei no desenvolvimento web, na modelagem 3D e na escolha das peças do robô. Essa experiência reforçou meu interesse em seguir carreira em áreas voltadas ao marketing, onde posso transformar ideias em algo visualmente marcante e inspirador.</p>
+        <a href="https://www.linkedin.com/in/leonardodepaulo?lipi=urn%3Ali%3Apage%3Ad_flagship3_profile_view_base_contact_details%3BtBuphsV%2FRWq%2BiJI%2F0z7OnA%3D%3D" class="linkedin" target="_blank">LinkedIn</a>
+      </div>
+    </div>
+
+    <div class="membro" data-aos="fade-left" data-aos-duration="800">
+      <div class="foto" style="background-image: url(/KITAsite/img/felix.jpg);"></div>
+      <div class="info">
+        <h3 class="nome">Gustavo</h3>
+        <p> Me chamo Gustavo, tenho 16 anos e minha principal contribuição no projeto foi na parte do código, especialmente na programação dos movimentos. Tenho bastante interesse e afinidade com o desenvolvimento back-end, além de possuir facilidade para trabalhar em equipe e pensar de forma criativa para resolver problemas. Também gosto de otimizar e testar novas ideias até alcançar o melhor resultado, por isso essa área foi a que mais combinou comigo, me senti realmente em casa durante o desenvolvimento.</p>
+        <a href="https://www.linkedin.com/in/gustavo-cordeiro-aa34a237a?lipi=urn%3Ali%3Apage%3Ad_flagship3_profile_view_base_contact_details%3B4w24sWd6SMqtUFDDYp6xig%3D%3D" class="linkedin" target="_blank">LinkedIn</a>
+      </div>
+    </div>
+
+    <div class="membro" data-aos="fade-right" data-aos-duration="800">
+      <div class="foto" style="background-image: url(/KITAsite/img/vini.jpg);"></div>
+      <div class="info">
+        <h3 class="nome">Vinícius</h3>
+        <p>Me chamo Vinícius, tenho 16 anos e minha principal contribuição no projeto foi na parte da robótica, conectando os componentes e configurando servos motores, Arduino e outras peças essenciais para o funcionamento do KITA. Também participei do desenvolvimento da cinemática e dos códigos responsáveis pelos movimentos. Tenho muito interesse na área de desenvolvimento de software e gosto de entender como a programação pode dar vida a sistemas. Pretendo seguir nessa área no futuro, unindo lógica, tecnologia e criatividade para criar soluções inovadoras.</p>
+        <a href="https://www.linkedin.com/in/vin%C3%ADcius-eizo-higa-21073737a?lipi=urn%3Ali%3Apage%3Ad_flagship3_profile_view_base_contact_details%3BZ%2BUcGSg%2BS9ConnZTVDXpGQ%3D%3D" class="linkedin" target="_blank">LinkedIn</a>
+      </div>
+    </div>
+
+    <div class="membro" data-aos="fade-left" data-aos-duration="800">
+      <div class="foto" style="background-image: url(/KITAsite/img/arthur.jpg);"></div>
+      <div class="info">
+        <h3 class="nome">Arthur</h3>
+        <p>Meu nome é Arthur Farias Carvalho, tenho 16 anos e sou responsável pela comunicação e divulgação do projeto Kita, onde contribuo para tornar o projeto mais acessível e conhecido. Além disso, meu grande interesse profissional é na área de engenharia mecatrônica, buscando sempre unir tecnologia, criatividade e inovação para desenvolver soluções práticas e eficientes.</p>
+        <a href="https://www.linkedin.com/in/arthur-farias-carvalho-381a6a34b?lipi=urn%3Ali%3Apage%3Ad_flagship3_profile_view_base_contact_details%3BTha8V8OjQxSk0xg0gS9sGg%3D%3D" class="linkedin" target="_blank">LinkedIn</a>
+      </div>
+    </div>
+  </section>
+
+  <section class="orientadores" data-aos="fade-up" data-aos-duration="800">
+    <h2>Nossos Orientadores</h2>
+
+    <div class="orientadores-container">
+      <div class="orientador" data-aos="zoom-in" data-aos-delay="100">
+        <div class="foto"></div>
+        <p class="nome">Felipe Facio</p>
+        <p class="ano">2024</p>
+      </div>
+
+      <div class="orientador" data-aos="zoom-in" data-aos-delay="200">
+        <div class="foto2"></div>
+        <p class="nome">Adilson Cunha</p>
+        <p class="ano">2025</p>
+      </div>
+    </div>
+
+    <!-- Retângulo de imagem -->
+    <div class="imagem-carrossel">
+      <div class="seta voltar" id="voltar">‹</div>
+      <div class="imagem" id="imagem"></div>
+      <div class="seta avancar" id="avancar">›</div>
+    </div>
+  </section>
+
+  <footer class="footer">
+    <div class="footer-container">
+      <div class="footer-logo">
+        <img src="/KITAsite/img/Group 52 1.png" alt="Logo KITA">
+      </div>
+      <nav class="footer-nav">
+        <a href="/KITAsite/INDEXprincipal.html">Início</a>
+        <a href="/KITAsite/INDEXavancos.html">Evolução</a>
+        <a href="/KITAsite/Experiência.html">Experiências</a>
+        <a href="#sobre" class="active">Sobre Nós</a>
+      </nav>
+      <div class="footer-social">
+        <a href="https://www.instagram.com/projeto_kita"><img src="/KITAsite/img/Instagram.svg" alt="Instagram"></a>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>© 2025 KITA. Todos os direitos reservados.</p>
+    </div>
+  </footer>
+
+  <!-- Script do scroll e do menu -->
+  <script>
+    window.addEventListener("scroll", function() {
+      const navbar = document.getElementById("navbar");
+      if (window.scrollY > 50) {
+        navbar.classList.add("scrolled");
+      } else {
+        navbar.classList.remove("scrolled");
+      }
+    });
+  </script>
+
+  <!-- Bootstrap JS -->
+  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.min.js"></script>
+
+  <!-- AOS JS -->
+  <script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
+  <script>
+    AOS.init({
+      once: true,
+      offset: 100
+    });
+  </script>
+
+  <script src="SCRIPTsobre.js"></script>
+</body>
+</html>

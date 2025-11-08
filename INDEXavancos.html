@@ -1,0 +1,492 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>KITA — Linha do Tempo</title>
+
+  <!-- Bootstrap -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+
+  <!-- Ícones -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" rel="stylesheet">
+
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600;800&display=swap" rel="stylesheet">
+
+  <!-- Animate On Scroll (AOS) for animations -->
+  <link href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css" rel="stylesheet">
+
+  <style>
+    /* ===== Reset e Variáveis ===== */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Montserrat', sans-serif;
+    }
+
+    :root {
+      --bg: #0b0b0d;
+      --panel: #0f0f11;
+      --muted: #bfc0c6;
+      --accent: #8a2be2;
+      --accent-2: #9f4df0;
+      --max-width: 1100px;
+      --radius: 14px;
+      --gap: 28px;
+      --fw-700: 700;
+    }
+
+    body {
+      background: linear-gradient(180deg, var(--bg), #070708 120%);
+      color: #e9e9eb;
+      -webkit-font-smoothing: antialiased;
+      line-height: 1.45;
+      padding-top: 90px; /* espaço para o header fixo */
+    }
+
+    .container {
+      width: 100%;
+      max-width: var(--max-width);
+      margin: 0 auto;
+    }
+
+    /* ===== Navbar (igual à Home) ===== */
+    .navbar {
+      backdrop-filter: blur(8px);
+      transition: background-color 0.4s ease, box-shadow 0.4s ease;
+      background: transparent;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      z-index: 1000;
+    }
+
+    .navbar.scrolled {
+      background: rgba(65, 11, 71, 0.95);
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.4);
+    }
+
+    .navbar a.nav-link {
+      color: white !important;
+      font-weight: 600;
+      margin: 0 12px;
+      transition: color 0.3s ease;
+    }
+
+    .navbar a.nav-link:hover {
+      color: #b97ff5 !important;
+    }
+
+    .navbar-brand img {
+      height: 44px;
+      width: auto;
+    }
+
+    /* Centralizar menu no celular */
+    @media (max-width: 991px) {
+      .navbar-collapse {
+        text-align: center;
+      }
+
+      .navbar-nav {
+        flex-direction: column;
+        gap: 15px;
+      }
+
+      .navbar-toggler {
+        border: none;
+      }
+
+      .navbar-toggler:focus {
+        box-shadow: none;
+      }
+
+      .bi-list {
+        color: white;
+        font-size: 1.8rem;
+      }
+    }
+
+    /* ===== Hero ===== */
+    .hero {
+      text-align: center;
+      margin-bottom: 40px;
+    }
+
+    .hero h1 {
+      font-size: clamp(32px, 6vw, 64px);
+      letter-spacing: 2px;
+      font-weight: 800;
+      color: #ffffff;
+    }
+
+    .hero p {
+      color: var(--muted);
+      margin-top: 12px;
+      font-size: clamp(14px, 2vw, 18px);
+    }
+
+    /* ===== Timeline ===== */
+    .timeline {
+      position: relative;
+      margin: 80px auto;
+      padding: 20px 0;
+      max-width: var(--max-width);
+    }
+
+    .timeline::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      left: 50%;
+      width: 4px;
+      background: linear-gradient(180deg, var(--accent), var(--accent-2));
+      transform: translateX(-50%);
+      border-radius: 8px;
+      box-shadow: 0 0 20px rgba(159, 77, 240, 0.4);
+    }
+
+    .event {
+      position: relative;
+      width: 50%;
+      padding: 20px 40px;
+      transition: transform 0.3s ease, opacity 0.3s ease;
+      opacity: 0; /* Para animações AOS */
+    }
+
+    .event .panel {
+      background: var(--panel);
+      padding: 20px;
+      border-radius: 12px;
+      box-shadow: 0 0 10px rgba(138, 43, 226, 0.4);
+      color: var(--muted);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      transition: box-shadow 0.3s ease, transform 0.3s ease;
+    }
+
+    .event .panel:hover {
+      box-shadow: 0 0 20px rgba(138, 43, 226, 0.6);
+      transform: translateY(-5px);
+    }
+
+    .event .panel h3 {
+      color: #fff;
+      font-size: 20px;
+      transition: color 0.3s ease;
+    }
+
+    .event .panel:hover h3 {
+      color: var(--accent-2);
+    }
+
+    .event.left {
+      left: 0;
+      text-align: right;
+    }
+
+    .event.right {
+      left: 50%;
+    }
+
+    .event img {
+      width: 100%;
+      max-width: 400px;
+      border-radius: 10px;
+      margin-bottom: 10px;
+      transition: transform 0.3s ease;
+    }
+
+    .event .panel:hover img {
+      transform: scale(1.05);
+    }
+
+    .dot-wrap {
+      position: absolute;
+      top: 24px;
+      left: 50%;
+      transform: translateX(-50%);
+      cursor: pointer;
+      transition: transform 0.3s ease;
+    }
+
+    .dot-wrap:hover {
+      transform: translateX(-50%) scale(1.2);
+    }
+
+    .dot {
+      width: 20px;
+      height: 20px;
+      background: var(--accent);
+      border-radius: 50%;
+      border: 3px solid #fff;
+      box-shadow: 0 0 15px rgba(138, 43, 226, 0.5);
+      animation: pulse 2s infinite;
+    }
+
+    @keyframes pulse {
+      0% { box-shadow: 0 0 0 0 rgba(138, 43, 226, 0.7); }
+      70% { box-shadow: 0 0 0 10px rgba(138, 43, 226, 0); }
+      100% { box-shadow: 0 0 0 0 rgba(138, 43, 226, 0); }
+    }
+
+    /* ===== Botão futuro ===== */
+    .botaoFuturo {
+      height: 50px;
+      width: 200px;
+      font-size: large;
+      margin-top: 15px;
+      background-color: #64197a;
+      border-radius: 10px;
+      border: none;
+      color: white;
+      cursor: pointer;
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      transition: background-color 0.3s ease, transform 0.3s ease;
+    }
+
+    .botaoFuturo:hover {
+      background-color: #7b24a5;
+      transform: scale(1.05);
+    }
+
+    /* ===== Footer ===== */
+    .footer {
+      background-color: #64197a;
+      padding: 40px;
+      color: #000;
+      width: 100%;
+      margin-top: 100px;
+    }
+
+    .footer-container {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      border-bottom: 1px solid #3D1344;
+      padding-bottom: 10px;
+    }
+
+    .footer-logo img {
+      height: 35px;
+    }
+
+    .footer-nav {
+      display: flex;
+      gap: 30px;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+
+    .footer-nav a {
+      color: #000;
+      text-decoration: none;
+      font-weight: 500;
+      font-size: 15px;
+      transition: color 0.3s ease;
+    }
+
+    .footer-nav a:hover {
+      color: #ffb8fb;
+    }
+
+    .footer-social {
+      display: flex;
+      gap: 15px;
+    }
+
+    .footer-social img {
+      width: 22px;
+      height: 22px;
+      transition: transform 0.3s ease;
+    }
+
+    .footer-social img:hover {
+      transform: scale(1.1);
+    }
+
+    .footer-bottom {
+      text-align: center;
+      font-size: 13px;
+      color: #000;
+      margin-top: 10px;
+    }
+
+    /* ===== Responsividade timeline ===== */
+    @media (max-width: 900px) {
+      .timeline::before {
+        left: 20px;
+      }
+
+      .event {
+        width: 100%;
+        padding-left: 60px;
+        padding-right: 25px;
+      }
+
+      .event.left, .event.right {
+        left: 0;
+        text-align: left;
+      }
+
+      .dot-wrap {
+        left: 20px;
+      }
+    }
+
+    @media (max-width: 700px) {
+      .footer-container {
+        flex-direction: column;
+        text-align: center;
+        gap: 20px;
+      }
+
+      .footer-nav {
+        flex-direction: column;
+        gap: 10px;
+      }
+
+      .footer-social {
+        justify-content: center;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <!-- Navbar -->
+  <nav id="navbar" class="navbar navbar-expand-lg fixed-top">
+    <div class="container">
+      <a class="navbar-brand" href="/KITAsite/INDEXprincipal.html">
+        <img src="/KITAsite/img/logo.png" alt="KITA">
+      </a>
+      <button class="navbar-toggler text-white" type="button" data-bs-toggle="collapse" data-bs-target="#navMenu">
+        <span class="bi bi-list"></span>
+      </button>
+      <div class="collapse navbar-collapse justify-content-end" id="navMenu">
+        <ul class="navbar-nav mx-auto text-center">
+          <li class="nav-item"><a class="nav-link active" href="/KITAsite/INDEXprincipal.html">Início</a></li>
+          <li class="nav-item"><a class="nav-link" href="#evolução">Evolução</a></li>
+          <li class="nav-item"><a class="nav-link" href="/KITAsite/Experiência.html">Experiências</a></li>
+          <li class="nav-item"><a class="nav-link" href="/KITAsite/INDEXsobre.html">Sobre Nós</a></li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <section class="hero" id="hero">
+    <h1>LINHA DO TEMPO</h1>
+    <p>Acompanhe a evolução do projeto KITA — do início até o futuro!</p>
+  </section>
+
+  <main class="timeline" id="evolução">
+    <div class="event right" data-aos="fade-left" data-aos-duration="800">
+      <div class="panel">
+        <img src="/KITAsite/img/KitaAntigo.jpg" alt="Começo">
+        <h3>2025 — Início</h3>
+        <p>No início, o KITA nasceu como um simples protótipo de carrinho que detectava obstáculos. A partir disso, resolvemos embarcar em um desafio maior: criar um robô quadrúpede.</p>
+      </div>
+      <div class="dot-wrap"><div class="dot"></div></div>
+    </div>
+
+    <div class="event left" data-aos="fade-right" data-aos-duration="800">
+      <div class="dot-wrap"><div class="dot"></div></div>
+      <div class="panel">
+        <img src="/KITAsite/img/KitaFinal.jpg" alt="Passado">
+        <h3>2025 — Transição</h3>
+        <p>No meio do ano, fizemos a transição para o modelo quadrúpede. Mesmo com limitações, conseguimos desenvolver sua estrutura física e aprimorar nossos estudos para o futuro.</p>
+      </div>
+    </div>
+
+    <div class="event right" data-aos="fade-left" data-aos-duration="800">
+      <div class="panel">
+        <img src="/KITAsite/img/ft27Quadrada.jpg" alt="Presente">
+        <h3>2025 — Atual</h3>
+        <p>O KITA passou a andar de forma mais estável, com movimentos baseados em teorias de cinemática inversa, melhorando sua precisão e equilíbrio.</p>
+      </div>
+      <div class="dot-wrap"><div class="dot"></div></div>
+    </div>
+
+    <div class="event left" data-aos="fade-right" data-aos-duration="800">
+      <div class="dot-wrap"><div class="dot"></div></div>
+      <div class="panel">
+        <img src="/KITAsite/img/futuro.png" alt="Futuro">
+        <h3>2026+</h3>
+        <p>Pretendemos aumentar o tamanho do KITA e aprimorar sua detecção e desvio de obstáculos, tornando-o um robô cada vez mais completo.</p>
+        <a href="#modalFuturo" class="botaoFuturo" data-bs-toggle="modal">Saiba Mais</a>
+      </div>
+    </div>
+  </main>
+
+  <!-- Modal para interatividade no futuro -->
+  <div class="modal fade" id="modalFuturo" tabindex="-1" aria-labelledby="modalFuturoLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content" style="background: var(--panel); color: #fff; border-radius: 12px; box-shadow: 0 0 20px rgba(138, 43, 226, 0.6);">
+        <div class="modal-header" style="border-bottom: 1px solid var(--accent);">
+          <h5 class="modal-title" id="modalFuturoLabel">Futuro do KITA</h5>
+          <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <p>No futuro, planejamos integrar IA avançada para navegação autônoma, sensores de ambiente e até interações com humanos. Fique ligado para atualizações!</p>
+          <img src="/KITAsite/img/futuro.png" alt="Futuro KITA" class="img-fluid rounded">
+        </div>
+        <div class="modal-footer" style="border-top: 1px solid var(--accent);">
+          <button type="button" class="btn botaoFuturo" data-bs-dismiss="modal">Fechar</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <footer class="footer">
+    <div class="footer-container">
+      <div class="footer-logo">
+        <img src="/KITAsite/img/Group 52 1.png" alt="Logo KITA">
+      </div>
+      <nav class="footer-nav">
+        <a href="/KITAsite/INDEXprincipal.html">Início</a>
+        <a href="#hero">Evolução</a>
+        <a href="/KITAsite/Experiência.html">Experiências</a>
+        <a href="/KITAsite/INDEXsobre.html">Sobre Nós</a>
+      </nav>
+      <div class="footer-social">
+        <a href="https://www.instagram.com/projeto_kita"><img src="/KITAsite/img/Instagram.svg" alt="Instagram"></a>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>© 2025 KITA. Todos os direitos reservados.</p>
+    </div>
+  </footer>
+
+  <script>
+    // Navbar scroll effect
+    window.addEventListener('scroll', () => {
+      const navbar = document.getElementById('navbar');
+      if (window.scrollY > 50) navbar.classList.add('scrolled');
+      else navbar.classList.remove('scrolled');
+    });
+  </script>
+
+  <!-- Bootstrap JS -->
+  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.min.js"></script>
+
+  <!-- AOS JS -->
+  <script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
+  <script>
+    AOS.init({
+      once: true, // Anima apenas uma vez
+      offset: 100 // Inicia animação 100px antes de entrar na view
+    });
+  </script>
+</body>
+</html>

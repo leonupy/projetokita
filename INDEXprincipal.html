@@ -1,0 +1,369 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>KITA - Home</title>
+
+  <!-- Bootstrap -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600;800&display=swap" rel="stylesheet">
+
+  <!-- Ícones -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" rel="stylesheet">
+
+  <link rel="stylesheet" href="/KITAsite/STYLEprincipal.css">
+
+  <style>
+    * {
+      font-family: 'Montserrat', sans-serif;
+      scroll-behavior: smooth;
+    }
+
+    body {
+      background-color: #000;
+      color: #fff;
+      overflow-x: hidden;
+
+      /* ===== NAVBAR ===== */
+    .navbar {
+      backdrop-filter: blur(8px);
+      transition: background-color 0.4s ease, box-shadow 0.4s ease;
+      background: transparent;
+    }
+
+    .navbar.scrolled {
+      background: rgba(65, 11, 71, 0.95);
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.4);
+    }
+
+    .navbar a.nav-link {
+      color: white !important;
+      font-weight: 600;
+      margin: 0 12px;
+      transition: color 0.3s ease;
+    }
+
+    .navbar a.nav-link:hover {
+      color: #b97ff5 !important;
+    }
+
+    /* Centralizar menu no celular */
+    @media (max-width: 991px) {
+      .navbar-collapse {
+        text-align: center;
+      }
+
+      .navbar-nav {
+        flex-direction: column;
+        gap: 15px;
+      }
+
+      .navbar-toggler {
+        border: none;
+      }
+
+      .navbar-toggler:focus {
+        box-shadow: none;
+      }
+
+      .bi-list {
+        color: white;
+        font-size: 1.8rem;
+      }
+    }
+    }
+
+    /* ===== NAVBAR ===== */
+    .navbar {
+      backdrop-filter: blur(8px);
+      transition: background-color 0.4s ease, box-shadow 0.4s ease;
+    }
+    .navbar.scrolled {
+      background: rgba(65, 11, 71, 0.95);
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.4);
+    }
+    .navbar a.nav-link {
+      color: white !important;
+      font-weight: 600;
+      margin: 0 12px;
+    }
+    .navbar a.nav-link:hover {
+      color: #b97ff5 !important;
+    }
+
+    /* ===== HERO ===== */
+    .hero {
+      height: 100vh;
+      background: linear-gradient(180deg, rgba(0, 0, 0, 0.3), #000),
+                  url('/KITAsite/img/hero-bg.jpg') center/cover no-repeat;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      position: relative;
+    }
+    .hero h1 {
+      font-size: 4rem;
+      font-weight: 800;
+      text-shadow: 0 0 30px rgba(255,255,255,0.4);
+    }
+    .hero .btn-outline-light {
+      border: 2px solid #b97ff5;
+      color: #fff;
+      transition: 0.3s;
+    }
+    .hero .btn-outline-light:hover {
+      background-color: #b97ff5;
+      color: #000;
+    }
+
+    /* ===== SOBRE KITA ===== */
+    .sobre-kita {
+      background: linear-gradient(to top, #1a001f, #000);
+      padding: 100px 20px;
+      position: relative;
+    }
+    .sobre-kita h2 {
+      color: #b97ff5;
+      font-weight: 700;
+    }
+    .sobre-kita .imagem {
+      background: url('/KITAsite/img/Gato.png') center/contain no-repeat;
+      height: 400px;
+      opacity: 0.9;
+      transition: transform 0.4s;
+    }
+    .sobre-kita .imagem:hover {
+      transform: scale(1.05);
+    }
+
+    /* ===== COMO FUNCIONA ===== */
+    .funcionamento {
+      background: url('/KITAsite/img/Como funciona.png') center/cover no-repeat;
+      padding: 100px 20px;
+      color: #eee;
+    }
+    .funcionamento h2 {
+      text-align: center;
+      color: #b97ff5;
+      font-weight: 700;
+      margin-bottom: 40px;
+    }
+    .card {
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      border-radius: 15px;
+      transition: transform 0.3s, box-shadow 0.3s;
+    }
+    .card:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 10px 20px rgba(185, 127, 245, 0.2);
+    }
+
+    /* ===== CONTATO ===== */
+    .contato {
+      background-color: #0a000d;
+      padding: 100px 20px;
+    }
+    .contato h2 {
+      color: #b97ff5;
+      margin-bottom: 20px;
+    }
+    .contato .icon {
+      color: #b97ff5;
+      font-size: 1.5rem;
+      margin-right: 10px;
+    }
+    .contato a {
+      color: #b97ff5;
+      text-decoration: none;
+    }
+    .contato a:hover {
+      text-decoration: underline;
+      color: #d4aaff;
+    }
+
+    /* ===== FOOTER ===== */
+    footer {
+      background-color: #64197a;
+      color: #000;
+      padding: 30px 0;
+    }
+    footer a {
+      color: #000;
+      text-decoration: none;
+      margin: 0 10px;
+      transition: color 0.3s;
+    }
+    footer a:hover {
+      color: #fff;
+    }
+    .footer-social img {
+      width: 22px;
+      height: 22px;
+      margin-left: 10px;
+      transition: transform 0.3s;
+    }
+    .footer-social img:hover {
+      transform: scale(1.2);
+    }
+  </style>
+</head>
+
+<body>
+<!-- Vídeo de fundo -->
+<div id="video-bg" class="video-bg"></div>
+
+
+<!-- Camada escura e conteúdo -->
+<div class="overlay"></div>
+<div class="content">
+
+
+
+  <!-- Navbar -->
+  <nav id="navbar" class="navbar navbar-expand-lg fixed-top">
+    <div class="container">
+      <a class="navbar-brand" href="#">
+        <img src="/KITAsite/img/logo.png" alt="KITA" height="40">
+      </a>
+      <button class="navbar-toggler text-white" type="button" data-bs-toggle="collapse" data-bs-target="#navMenu">
+        <span class="bi bi-list"></span>
+      </button>
+      <div class="collapse navbar-collapse justify-content-end" id="navMenu">
+        <ul class="navbar-nav">
+          <li class="nav-item"><a class="nav-link active" href="#hero">Início</a></li>
+          <li class="nav-item"><a class="nav-link" href="/KITAsite/INDEXavancos.html">Evolução</a></li>
+          <li class="nav-item"><a class="nav-link" href="/KITAsite/Experiência.html">Experiências</a></li>
+          <li class="nav-item"><a class="nav-link" href="/KITAsite/INDEXsobre.html">Sobre Nós</a></li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Hero -->
+  <section class="hero" id="hero">
+    <div>
+      <h1 class="mb-4">KITA</h1>
+      <button class="btn btn-outline-light btn-lg" id="verMaisBtn" >Ver mais</button>
+    </div>
+  </section>
+</div>
+
+<!-- Script da API do YouTube -->
+
+  <!-- Sobre o KITA -->
+  <section class="sobre-kita" id="sobre">
+    <div class="container d-flex flex-lg-row flex-column align-items-center justify-content-between gap-5">
+      <div class="texto col-lg-6">
+        <h2>O que é o KITA?</h2>
+        <p class="mt-4">
+         O KITA é um robô-guia desenvolvido com o propósito de transformar a mobilidade e a autonomia de pessoas cegas ou com baixa visão. Inspirado na delicadeza e inteligência de um gato, o KITA combina tecnologia, acessibilidade e empatia para oferecer uma experiência de locomoção mais segura e independente.
+
+No Brasil, existem mais de 6 milhões de pessoas com deficiência visual, mas menos de 200 cães-guia em atividade — uma disparidade que evidencia a urgência por soluções acessíveis e escaláveis. Pensando nisso, o KITA surge como uma alternativa inovadora e inclusiva, equipada com sensores que detectam obstáculos e um design funcional que equilibra tecnologia, estética e propósito social.
+
+Mais do que um robô, o KITA representa um passo em direção a um futuro mais humano e igualitário, onde a tecnologia atua como ponte para a inclusão e a autonomia de todos.
+        </p>
+      </div>
+      <div class="imagem col-lg-5"></div>
+    </div>
+  </section>
+
+  <!-- Como funciona -->
+  <section class="funcionamento">
+    <div class="container">
+      <h2>Como o KITA funciona</h2>
+      <div class="row g-4">
+        <div class="col-md-4">
+          <div class="card p-4 h-100 text-center">
+            <img src="/KITAsite/img/imgContato.jpg" alt="" style="margin-bottom: 25px; border-radius: 10%; height: 200px; ">
+            <h3>Cabeça</h3>
+            <p>Equipada com um sensor e um servo Motor, permitindo a detecção de obstáculos e a mobilidade da cabeça.</p>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="card p-4 h-100 text-center">
+            <img src="/KITAsite/img/KitaCorpo.jpg" alt="" style="margin-bottom: 25px; border-radius: 10%; height: 200px; ">
+
+            <h3>Corpo</h3>
+
+            <p>O corpo do Kita é composto por uma de arduino UNO/esp32 e inumeros servos motores, que possibilitam os seus movimentos, cada servo é programado de acordo com conceitos de cinemática inversa.</p>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="card p-4 h-100 text-center">
+            <img src="/KITAsite/img/sensor.webp" alt="" style="margin-bottom: 25px; border-radius: 10%; height: 200px;">
+            <h3>Detecção</h3>
+            <p>O KITA possui um sensor frontal que detecta todo obstáculo em sua frente, parando e desviando como um cão-guia. </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Contato -->
+  <section class="contato">
+    <div class="container">
+      <div class="row align-items-center">
+        <div class="col-lg-6 mb-5 mb-lg-0">
+          <h2>Fale conosco</h2>
+          <p>Estamos prontos para ajudar e esclarecer suas dúvidas.</p>
+
+          <p><i class="bi bi-envelope icon"></i><strong>Email:</strong> 
+            <a href="mailto:depaulosilvaleonardo@gmail.com">depaulosilvaleonardo@gmail.com</a></p>
+          <p><i class="bi bi-telephone icon"></i><strong>Telefone:</strong> 
+            <a href="tel:+5511944638376">+55 (11) 94463-8376</a></p>
+          <p><i class="bi bi-linkedin icon"></i><strong>LinkedIn:</strong><br> <a href="https://www.linkedin.com/in/leonardodepaulo?lipi=urn%3Ali%3Apage%3Ad_flagship3_profile_view_base_contact_details%3BtBuphsV%2FRWq%2BiJI%2F0z7OnA%3D%3D" class="linkedin">Leonardo</a> <br> <a href="https://www.linkedin.com/in/gustavo-cordeiro-aa34a237a?lipi=urn%3Ali%3Apage%3Ad_flagship3_profile_view_base_contact_details%3B4w24sWd6SMqtUFDDYp6xig%3D%3D" class="linkedin">Gustavo</a> <br>         <a href="https://www.linkedin.com/in/vin%C3%ADcius-eizo-higa-21073737a?lipi=urn%3Ali%3Apage%3Ad_flagship3_profile_view_base_contact_details%3BZ%2BUcGSg%2BS9ConnZTVDXpGQ%3D%3D" class="linkedin">Vinícius</a> <br>         <a href="https://www.linkedin.com/in/arthur-farias-carvalho-381a6a34b?lipi=urn%3Ali%3Apage%3Ad_flagship3_profile_view_base_contact_details%3BTha8V8OjQxSk0xg0gS9sGg%3D%3D" class="linkedin">Arthur</a></p>
+        </div>
+        <div class="col-lg-6">
+          <img src="/KITAsite/img/imgContato.jpg" class="img-fluid rounded-4 shadow" alt="Contato">
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <div class="container d-flex flex-column flex-md-row justify-content-between align-items-center">
+      <div>
+        <img src="/KITAsite/img/Group 52 1.png" alt="Logo KITA" height="35">
+      </div>
+      <nav class="d-flex align-items-center my-3 my-md-0">
+        <a href="#hero">Início</a>
+        <a href="/KITAsite/INDEXavancos.html">Evolução</a>
+        <a href="/KITAsite/Experiência.html">Experiências</a>
+        <a href="/KITAsite/INDEXsobre.html">Sobre Nós</a>
+      </nav>
+      <div class="footer-social">
+        <a href="https://www.instagram.com/projeto_kita"><img src="/KITAsite/img/Instagram.svg"></a>
+
+      </div>
+    </div>
+    <div class="text-center mt-3">
+      © 2025 KITA. Todos os direitos reservados.
+    </div>
+  </footer>
+
+  <!-- JS -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+  <script>
+    // Animação de navbar ao rolar
+    window.addEventListener('scroll', () => {
+      const navbar = document.getElementById('navbar');
+      if (window.scrollY > 50) navbar.classList.add('scrolled');
+      else navbar.classList.remove('scrolled');
+    });
+    document.getElementById("verMaisBtn").addEventListener("click", function() {
+      document.getElementById("sobre").scrollIntoView({ behavior: "smooth" });
+    });
+  </script>
+  <!-- Bootstrap JS (necessário para o menu sanduíche funcionar) -->
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.min.js"></script>
+<script src="https://www.youtube.com/iframe_api"></script>
+<script src="/KITAsite/SCRIPTprincipal.js"></script>
+</body>
+</html>

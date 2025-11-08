@@ -1,0 +1,438 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600;800&display=swap');
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Montserrat', sans-serif;
+}
+
+body {
+  color: white;
+  background: black;
+  overflow-x: hidden;
+}
+/* ===== Header ===== */
+/* ===== Header ===== */
+/* ===== NAVBAR ===== */
+
+.navbar {
+  backdrop-filter: blur(8px);
+  transition: background-color 0.4s ease, box-shadow 0.4s ease;
+  background: transparent;
+}
+
+.navbar.scrolled {
+  background: rgba(65, 11, 71, 0.95);
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.4);
+}
+
+.navbar a.nav-link {
+  color: white !important;
+  font-weight: 600;
+  margin: 0 12px;
+  transition: color 0.3s ease;
+}
+
+.navbar a.nav-link:hover {
+  color: #b97ff5 !important;
+}
+
+/* Centralizar os links no mobile */
+@media (max-width: 991px) {
+  .navbar-collapse {
+    text-align: center;
+  }
+
+  .navbar-nav {
+    flex-direction: column;
+    gap: 15px;
+  }
+}
+/* ===== AJUSTE RESPONSIVO - IMAGEM ACIMA DO TEXTO ===== */
+@media (max-width: 991px) {
+  .membro {
+    flex-direction: column;          /* empilha imagem e texto */
+    text-align: center;              /* centraliza o conteúdo */
+  }
+
+  .membro .foto {
+    margin-bottom: 20px;             /* espaço entre a foto e o texto */
+    width: 200px;                    /* reduz um pouco no celular */
+    height: 200px;
+  }
+
+  .membro .info {
+    text-align: center;
+    padding: 0 10px;
+  }
+
+  .membro .info p {
+    font-size: 0.95rem;
+  }
+}
+
+    nav ul{list-style:none;display:flex;gap:32px;align-items:center}
+    nav a{
+      color:#fff;text-decoration:none;font-weight:600;
+      letter-spacing:1px;font-size:14px;opacity:0.95
+    }
+    nav a:hover{opacity:1;text-decoration:underline}
+
+/* SEÇÃO SOBRE NÓS */
+.sobre {
+  position: relative;
+  height: auto;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 150px 20px;
+}
+
+.sobre .fundo {
+  position: absolute;
+  inset: 0;
+  background: url('/KITAsite/img/fundoSobre.png') no-repeat center center / cover;
+  z-index: 0;
+  opacity: 0.7;
+}
+
+.sobre .conteudo {
+  position: relative;
+  z-index: 2;
+  max-width: 900px;
+}
+
+nav a.ativo {
+  color: #a020f0; /* roxo */
+  border-bottom: 2px solid #a020f0;
+}
+
+.sobre h1 {
+  font-size: 2.5rem;
+  font-weight: 800;
+  margin-bottom: 40px;
+}
+
+.sobre p {
+  font-size: 1.1rem;
+  line-height: 1.8;
+}
+
+
+
+/* SEÇÃO EQUIPE */
+.equipe {
+  background: black;
+  position: relative;
+  z-index: 2;
+  padding: 10px 20px;
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+.equipe h2 {
+  text-align: center;
+  font-size: 2rem;
+  font-weight: 700;
+  margin-bottom: 60px;
+  margin-top: 90px;
+}
+
+.membro {
+  display: flex;
+  align-items: center;
+  margin-bottom: 80px;
+  gap: 30px;
+}
+
+.foto {
+  width: 250px;
+  height: 250px;
+  border-radius: 50%;
+      background-size:cover; /* mostra a imagem inteira */
+  flex-shrink: 0;
+}
+
+.info {
+  flex: 1;
+}
+
+.nome {
+  font-size: 1.3rem;
+  font-weight: 700;
+}
+
+.info p {
+  margin: 10px 0;
+  color: #e5e5e5;
+  font-size: 0.95rem;
+  line-height: 1.6;
+}
+
+.linkedin {
+  color: white;
+  font-weight: 600;
+  text-decoration: none;
+}
+
+.linkedin:hover {
+  text-decoration: underline;
+}
+.footer {
+  background-color: #64197a;
+  padding: 40px;
+  color: #000101;
+  font-family: Inter, sans-serif;
+  width: 100vw;       /* ocupa toda a largura da tela */
+  position: relative;
+  left: 50%;
+  right: 50%;
+  margin-left: -50vw; /* “anula” o container */
+  margin-right: -50vw;
+}
+
+
+.event:hover .panel h3 {
+  color: var(--accent-2);
+}
+
+.logotipoAvancos{
+  height: 30px;
+  margin-top: 15px;
+}
+
+
+.panel {
+  background: var(--panel);
+  padding: 20px;
+  border-radius: 12px;
+  box-shadow: 0 0 10px rgba(138, 43, 226, 0.4);
+  color: var(--muted);
+  display: flex;
+  flex-direction: column;
+  align-items: center;   /* Centraliza horizontalmente */
+  justify-content: center; /* Centraliza verticalmente */
+  text-align: center; /* Centraliza o texto */
+}
+
+.textoTempo {
+  margin: 0;
+  text-align: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.orientadores {
+  background-color: #000; /* fundo preto */
+  color: #fff;
+  text-align: center;
+  padding: 60px 20px;
+  font-family: "Montserrat", sans-serif;
+}
+
+.orientadores h2 {
+  font-size: 22px;
+  font-weight: 700;
+  margin-bottom: 40px;
+}
+
+.orientadores-container {
+  display: flex;
+  justify-content: center;
+  gap: 100px; /* espaço entre os orientadores */
+  margin-bottom: 50px;
+  flex-wrap: wrap;
+  margin-bottom: 100px;
+}
+
+.orientador {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* Foto do Felipe */
+.orientador .foto {
+  width: 250px;
+  height: 250px;
+  background: url("/KITAsite/img/Felipe.jpeg") no-repeat center;
+  background-size: cover;
+  border-radius: 50%;
+  margin-bottom: 10px;
+}
+
+/* Foto do Adilson */
+.orientador .foto2 {
+  width: 250px;
+  height: 250px;
+  background: url("/KITAsite/img/Adilson.jpeg") no-repeat center;
+  background-size: cover;
+  border-radius: 50%;
+  margin-bottom: 10px;
+}
+
+.orientador .nome {
+  color: #f3a8ff; /* roxo suave */
+  font-weight: 600;
+  margin: 5px 0 0 0;
+}
+
+.orientador .ano {
+  color: #fff;
+  font-size: 13px;
+  margin: 2px 0 0 0;
+}
+
+
+/* Container do retângulo */
+/* Retângulo principal */
+.imagem-carrossel {
+  width:70%;
+  height: 384px;
+  margin: 0 auto;
+  background-color: #c4c4c4;
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: none;
+  border-radius: 8px;
+}
+
+/* Área da imagem */
+.imagem-carrossel .imagem {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-size: cover;
+  background-position: center;
+  transition: opacity 0.6s ease-in-out;
+}
+
+/* Botões de navegação */
+.imagem-carrossel .seta {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 30px;
+  color: #000;
+  cursor: pointer;
+  user-select: none;
+  z-index: 2;
+  transition: transform 0.2s ease;
+  font-weight: 500;
+}
+
+/* Seta da esquerda */
+.imagem-carrossel .voltar {
+  left: 20px;
+}
+
+/* Seta da direita */
+.imagem-carrossel .avancar {
+  right: 20px;
+}
+
+.imagem-carrossel .seta:hover {
+  transform: translateY(-50%) scale(1.2);
+}
+
+
+
+/* FOOTER */
+.footer-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  border-bottom: 1px solid #3D1344;
+  padding-bottom: 10px;
+}
+
+.footer-logo img {
+  height: 35px;
+}
+
+.footer-nav {
+  display: flex;
+  gap: 30px;
+}
+
+.footer-nav a {
+  color: #000101;
+  text-decoration: none;
+  font-weight: 500;
+  font-size: 15px;
+  transition: color 0.3s ease;
+}
+
+.footer-nav a:hover {
+  color: #380042;
+}
+
+.footer-social {
+  display: flex;
+  gap: 15px;
+}
+
+.footer-social img {
+  width: 22px;
+  height: 22px;
+  filter: brightness(0) invert(1); /* deixa as imagens brancas se forem pretas */
+  transition: transform 0.3s ease;
+}
+
+.footer-social img:hover {
+  transform: scale(1.1);
+}
+
+.footer-bottom {
+  text-align: center;
+  font-size: 13px;
+  color: 000101;
+  margin-top: 10px;
+}
+
+
+.footer-logo img {
+  height: 30px;
+}
+
+.footer-nav a {
+  color: #000; /* links pretos */
+  text-decoration: none;
+  font-weight: 500;
+  font-size: 15px;
+  transition: color 0.3s ease;
+}
+
+.footer-nav a:hover {
+  color: #ffb8fb; /* preto mais escuro no hover */
+}
+
+.footer-social img {
+  width: 22px;
+  height: 22px;
+  filter: none; /* remove o filtro branco */
+  transition: transform 0.3s ease;
+}
+
+.footer-social img:hover {
+  transform: scale(1.1);
+}
+
+.footer-bottom {
+  text-align: center;
+  font-size: 13px;
+  color: #000; /* texto preto */
+  margin-top: 10px;
+}
+
+

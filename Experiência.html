@@ -1,0 +1,462 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>KITA - Experiências</title>
+
+  <!-- Bootstrap -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600;800&display=swap" rel="stylesheet">
+
+  <!-- Ícones -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" rel="stylesheet">
+
+  <!-- Animate On Scroll (AOS) for animations -->
+  <link href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css" rel="stylesheet">
+
+  <style>
+    /* ===== CONFIGURAÇÕES GERAIS ===== */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Montserrat', sans-serif;
+      scroll-behavior: smooth;
+    }
+
+    :root {
+      --accent: #e38bff;
+      --bg-dark: #000000;
+      --bg-gradient: linear-gradient(45deg, #682074, #000000, #300637, #000000, #682074);
+      --text-muted: #e9e9e9;
+      --shadow: rgba(163, 66, 255, 0.3);
+    }
+
+    body {
+      background: var(--bg-gradient);
+      color: #fff;
+      overflow-x: hidden;
+      padding-top: 70px;
+    }
+
+    /* ===== NAVBAR ===== */
+    .navbar {
+      backdrop-filter: blur(8px);
+      transition: background-color 0.4s ease, box-shadow 0.4s ease;
+      background: transparent;
+    }
+
+    .navbar.scrolled {
+      background: rgba(65, 11, 71, 0.95);
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.4);
+    }
+
+    .navbar a.nav-link {
+      color: white !important;
+      font-weight: 600;
+      margin: 0 12px;
+      transition: color 0.3s ease;
+    }
+
+    .navbar a.nav-link:hover {
+      color: #b97ff5 !important;
+    }
+
+    /* Centralizar os links no mobile */
+    @media (max-width: 991px) {
+      .navbar-collapse {
+        text-align: center;
+      }
+
+      .navbar-nav {
+        flex-direction: column;
+        gap: 15px;
+      }
+    }
+
+    /* ===== SEÇÃO EXPERIÊNCIAS ===== */
+    .experiencias {
+      padding: 160px 8% 80px;
+      text-align: center;
+    }
+
+    .experiencias h1 {
+      font-size: clamp(1.8rem, 5vw, 2.6rem);
+      font-weight: 800;
+      margin-bottom: 60px;
+    }
+
+    .bloco {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 100px;
+      gap: 60px;
+      transition: transform 0.3s ease, opacity 0.3s ease;
+    }
+
+    .bloco:hover {
+      transform: translateY(-10px);
+    }
+
+    .bloco.invertido {
+      flex-direction: row-reverse;
+    }
+
+    .imagem {
+      width: 40%;
+      height: 300px;
+      background-size: cover;
+      background-position: center;
+      border-radius: 10px;
+      overflow: hidden;
+      box-shadow: 0 0 10px var(--shadow);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .bloco:hover .imagem {
+      transform: scale(1.05);
+      box-shadow: 0 0 20px var(--shadow);
+    }
+
+    .texto {
+      width: 55%;
+      text-align: left;
+      transition: color 0.3s ease;
+    }
+
+    .texto h3 {
+      color: var(--accent);
+      font-size: clamp(1.2rem, 3vw, 1.5rem);
+      margin-bottom: 15px;
+      transition: color 0.3s ease;
+    }
+
+    .bloco:hover .texto h3 {
+      color: #b97ff5;
+    }
+
+    .texto p {
+      color: var(--text-muted);
+      line-height: 1.7;
+      font-size: clamp(0.9rem, 2vw, 1rem);
+    }
+
+    .texto .autor {
+      margin-top: 10px;
+      font-weight: 700;
+      color: var(--accent);
+    }
+
+    /* ===== PASSOS MÁGICOS ===== */
+    .passos-magicos {
+      text-align: center;
+      padding: 80px 10%;
+    }
+
+    .passos-magicos h2 {
+      font-size: clamp(1.6rem, 5vw, 2.2rem);
+      font-weight: 800;
+      margin-bottom: 40px;
+    }
+
+    .passos-magicos .retangulo {
+      width: 100%;
+      max-width: 900px;
+      height: 300px;
+      margin: 0 auto 40px;
+      border-radius: 8px;
+      background: url('/KITAsite/img/passos.png') no-repeat center center / cover;
+      box-shadow: 0 0 15px var(--shadow);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .passos-magicos .retangulo:hover {
+      transform: scale(1.05);
+      box-shadow: 0 0 25px var(--shadow);
+    }
+
+    .passos-magicos p {
+      max-width: 900px;
+      margin: 0 auto;
+      font-size: clamp(0.9rem, 2vw, 1rem);
+      line-height: 1.7;
+      color: var(--text-muted);
+    }
+
+    /* ===== FOOTER ===== */
+    .footer {
+      background-color: #64197a;
+      padding: 40px;
+      color: #000;
+      width: 100%;
+    }
+
+    .footer-container {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      border-bottom: 1px solid #3D1344;
+      padding-bottom: 10px;
+    }
+
+    .footer-logo img {
+      height: 35px;
+    }
+
+    .footer-nav {
+      display: flex;
+      gap: 30px;
+    }
+
+    .footer-nav a {
+      color: #000;
+      text-decoration: none;
+      font-weight: 500;
+      font-size: 15px;
+      transition: color 0.3s ease;
+    }
+
+    .footer-nav a:hover {
+      color: #ffb8fb;
+    }
+
+    .footer-social {
+      display: flex;
+      gap: 15px;
+    }
+
+    .footer-social img {
+      width: 22px;
+      height: 22px;
+      transition: transform 0.3s ease;
+    }
+
+    .footer-social img:hover {
+      transform: scale(1.1);
+    }
+
+    .footer-bottom {
+      text-align: center;
+      font-size: 13px;
+      color: #000;
+      margin-top: 10px;
+    }
+
+    /* ===== RESPONSIVIDADE ===== */
+
+    /* Tablets */
+    @media (max-width: 1024px) {
+      .experiencias {
+        padding: 140px 6% 60px;
+      }
+
+      .bloco {
+        gap: 40px;
+      }
+
+      .imagem {
+        height: 220px;
+      }
+    }
+
+    /* Smartphones */
+    @media (max-width: 768px) {
+      .bloco {
+        flex-direction: column;
+        gap: 30px;
+        text-align: center;
+      }
+
+      .bloco.invertido {
+        flex-direction: column;
+      }
+
+      .imagem, .texto {
+        width: 100%;
+      }
+
+      .texto {
+        text-align: center;
+      }
+
+      .passos-magicos {
+        padding: 60px 6%;
+      }
+
+      .passos-magicos .retangulo {
+        height: 200px;
+      }
+
+      .footer-container {
+        flex-direction: column;
+        text-align: center;
+        gap: 20px;
+      }
+
+      .footer-nav {
+        flex-direction: column;
+        gap: 10px;
+      }
+
+      .footer-social {
+        justify-content: center;
+      }
+    }
+
+    /* Telas muito pequenas */
+    @media (max-width: 480px) {
+      .experiencias {
+        padding-top: 120px;
+      }
+
+      .passos-magicos .retangulo {
+        height: 160px;
+      }
+
+      .footer {
+        padding: 30px 20px;
+      }
+
+      .footer-nav a {
+        font-size: 14px;
+      }
+    }
+
+    .mark {
+      background-color: var(--accent);
+      color: var(--bg-dark);
+      padding: 0 4px;
+      border-radius: 4px;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Navbar -->
+  <nav id="navbar" class="navbar navbar-expand-lg fixed-top">
+    <div class="container">
+      <a class="navbar-brand" href="/KITAsite/INDEXprincipal.html">
+        <img src="/KITAsite/img/logo.png" alt="KITA" style="height: 40px;">
+      </a>
+      <button class="navbar-toggler text-white" type="button" data-bs-toggle="collapse" data-bs-target="#navMenu">
+        <span class="bi bi-list"></span>
+      </button>
+      <div class="collapse navbar-collapse justify-content-end" id="navMenu">
+        <ul class="navbar-nav mx-auto text-center">
+          <li class="nav-item"><a class="nav-link" href="/KITAsite/INDEXprincipal.html">Início</a></li>
+          <li class="nav-item"><a class="nav-link" href="/KITAsite/INDEXavancos.html">Evolução</a></li>
+          <li class="nav-item"><a class="nav-link active" href="#experiencia">Experiências</a></li>
+          <li class="nav-item"><a class="nav-link" href="/KITAsite/INDEXsobre.html">Sobre Nós</a></li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <!-- ===== CONTEÚDO ===== -->
+  <section class="experiencias" id="experiencia">
+    <h1>Nossas Experiências</h1>
+
+    <!-- BLOCO 1 -->
+    <div class="bloco" data-aos="fade-right" data-aos-duration="800">
+      <div class="imagem" style="background-image: url('/KITAsite/img/leoapresentando.jpg');"></div>
+      <div class="texto">
+        <h3>Experiência</h3>
+        <p>Minha experiência com o projeto KITA foi incrível e marcou profundamente minha trajetória. <mark class="mark">Fui o responsável por criar a logo e toda a identidade visual, além de planejar e executar as estratégias de marketing e posicionamento da marca. Atuei também na gestão do projeto, controle de custos e performance na apresentação final, sempre com o objetivo de transmitir de forma clara e envolvente o propósito do KITA. Assumi um papel de liderança na equipe, coordenando tarefas, tomando decisões estratégicas e garantindo que todas as áreas estivessem alinhadas com a visão do projeto.</mark> Essa vivência me permitiu desenvolver habilidades sólidas em branding, planejamento de campanhas, comunicação visual, storytelling, gestão de equipe e análise de público. Aprendi na prática como transformar uma ideia em algo memorável e inspirador. O KITA me ensinou a unir técnica, estratégia e propósito para criar resultados reais, uma experiência que consolidou minha paixão pela área e fortaleceu minhas competências profissionais.</p>
+        <p class="autor">Leonardo</p>
+      </div>
+    </div>
+
+    <!-- BLOCO 2 -->
+    <div class="bloco invertido" data-aos="fade-left" data-aos-duration="800">
+      <div class="imagem" style="background-image: url('/KITAsite/img/ft1.jpg');"></div>
+      <div class="texto">
+        <h3>Experiência</h3>
+        <p>Minha experiência com o projeto KITA foi simplesmente incrível. Durante o desenvolvimento, aprendi muita coisa que eu nem imaginava antes, mesmo estudando em um curso técnico. <mark class="mark">Tive contato com conceitos complexos como cinemática inversa, controle de múltiplos servomotores através do PCA9685, sincronização de movimentos, e otimização de rotinas de código para garantir que o robô se movesse de forma estável e natural. Dediquei-me ao máximo em cada etapa, desde os primeiros testes de movimentação até os ajustes complexos na programação.</mark> O processo teve altos e baixos, com muitos erros, tentativas e aprendizados, mas cada desafio me motivou ainda mais a continuar. Aprimorei minha forma de trabalhar em equipe, pensar de forma criativa e resolver problemas de forma prática. O KITA acabou se tornando muito mais do que um simples projeto para mim e virou uma parte importante da minha trajetória. Ver nosso robô ganhar "vida" e conquistar o segundo lugar no NEXT 2025 na categoria Iniciação Científica – Future Makers foi uma experiência única. Tenho um grande carinho por esse projeto e acredito de verdade que o KITA ainda vai muito mais longe.</p>
+        <p class="autor">Gustavo</p>
+      </div>
+    </div>
+
+    <!-- BLOCO 3 -->
+    <div class="bloco" data-aos="fade-right" data-aos-duration="800">
+      <div class="imagem" style="background-image: url('/KITAsite/img/ft7.jpg');"></div>
+      <div class="texto">
+        <h3>Experiência</h3>
+        <p>Minha experiência com o projeto KITA foi muito positiva. Participar do NEXT foi algo único, que <mark class="mark">me permitiu desenvolver habilidades importantes como trabalho em equipe e comunicação. Também ampliei bastante meus conhecimentos na área de robótica, aplicando linguagens como C e C++ no Arduino</mark>. Mesmo que eu não pretenda seguir profissionalmente nessa área, aprender sobre esse universo foi algo muito divertido e enriquecedor para o meu desenvolvimento pessoal e técnico.</p>
+        <p class="autor">Vinícius</p>
+      </div>
+    </div>
+
+    <!-- BLOCO 4 -->
+    <div class="bloco invertido" data-aos="fade-left" data-aos-duration="800">
+      <div class="imagem" style="background-image: url('/KITAsite/img/ft6.jpg');"></div>
+      <div class="texto">
+        <h3>Experiência</h3>
+        <p>Participo do projeto KITA atuando como <mark class="mark">responsável pela comunicação e divulgação, o que me permite desenvolver habilidades em planejamento estratégico, criação de conteúdo e relacionamento com o público</mark>. Tenho experiência em organizar formas de conscientização, gerenciar canais de comunicação e garantir que a missão do projeto seja transmitida de forma clara e acessível. Essa vivência me proporcionou aprender a trabalhar em equipe, lidar com desafios de comunicação e contribuir diretamente para o impacto social positivo do projeto.</p>
+        <p class="autor">Arthur</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="passos-magicos" data-aos="fade-up" data-aos-duration="800">
+    <h2>Passos Mágicos</h2>
+    <a href="https://passosmagicos.org.br/" target="_blank" rel="noopener noreferrer">
+      <div class="retangulo"></div>
+    </a>
+    <p>
+      A Passos Mágicos foi quem abriu as portas para que o nosso grupo pudesse viver essa experiência transformadora. Foi através dela que tivemos acesso a oportunidades, conhecimentos e mentorias que nos ajudaram a enxergar o nosso potencial e acreditar nas nossas ideias. O projeto KITA nasceu desse incentivo, da vontade de retribuir o que aprendemos, criando algo que realmente fizesse a diferença.
+    </p>
+  </section>
+
+  <!-- ===== FOOTER ===== -->
+  <footer class="footer">
+    <div class="footer-container">
+      <div class="footer-logo">
+        <img src="/KITAsite/img/Group 52 1.png" alt="Logo KITA">
+      </div>
+      <nav class="footer-nav">
+        <a href="/KITAsite/INDEXprincipal.html">Início</a>
+        <a href="/KITAsite/INDEXavancos.html">Evolução</a>
+        <a href="#experiencia">Experiências</a>
+        <a href="/KITAsite/INDEXsobre.html">Sobre Nós</a>
+      </nav>
+      <div class="footer-social">
+        <a href="https://www.instagram.com/projeto_kita"><img src="/KITAsite/img/Instagram.svg" alt="Instagram"></a>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>© 2025 KITA. Todos os direitos reservados.</p>
+    </div>
+  </footer>
+
+  <!-- Script do scroll e do menu -->
+  <script>
+    window.addEventListener("scroll", function() {
+      const navbar = document.getElementById("navbar");
+      if (window.scrollY > 50) {
+        navbar.classList.add("scrolled");
+      } else {
+        navbar.classList.remove("scrolled");
+      }
+    });
+  </script>
+
+  <!-- Bootstrap JS -->
+  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.min.js"></script>
+
+  <!-- AOS JS -->
+  <script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
+  <script>
+    AOS.init({
+      once: true,
+      offset: 100
+    });
+  </script>
+
+</body>
+</html>
